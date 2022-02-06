@@ -1,8 +1,10 @@
 services:
-  bin-calenar:
-    image: bin-calenar
+  bin-calendar:
+    image: bin-calendar
     environment:
       - DATA_UFPRT=
+    ports:
+      - 8080:8080
     logging:
       options:
         max-size: "200k"
