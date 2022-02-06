@@ -6,7 +6,7 @@ which simply downloads an iCal file. It used to be possible to format a URL
 which returned the correct calendar data from the council website itself
 but this appears to have been removed.
 
-## NGINX server.
+## NodeJS server.
 Add secret for environment variable `DATA_UFPRT`. This can be found as a hidden
 field on the councils website when viewing a calendar
 https://www.southampton.gov.uk/whereilive/waste-calendar, or in the network
