@@ -1,6 +1,5 @@
 # Builds & pushes a 'latest' docker image when a commit is made to main.
-
-name: Build and push docker image based on commit to specified branches.
+name: Build and push docker image based on commit to main.
 
 on:
   push:
