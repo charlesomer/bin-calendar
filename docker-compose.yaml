@@ -1,0 +1,9 @@
+services:
+  bin-calenar:
+    image: bin-calenar
+    environment:
+      - DATA_UFPRT=
+    logging:
+      options:
+        max-size: "200k"
+        max-file: "10"

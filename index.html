@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <title>Bin Calendar</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+  </style>
+
+  <head>
+    <script>
+      function getUrl() {
+        const form = document.getElementById('uprnForm');
+
+        document.getElementById("url-result").innerText = "https://bin-calendar.nova.do?uprn=" + form[0].value
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Bin Calendar Subscription</h1>
+
+    <p>
+      Provides a subscription link for automatic bin calendar updates.
+      Specifically from Southampton Council.
+    </p>
+
+    <p>
+      You can use a tool such as <a href="https://uprn.uk">https://uprn.uk</a>
+      to find the UPRN you require.
+    </p>
+
+    <form onsubmit="event.preventDefault(); getUrl()" type="text/JavaScript" id="uprnForm">
+      <label for="uprn">UPRN</label>
+      <input type="text" id="uprn" name="uprn" required><br />
+      <input type="submit" value="Get URL">
+    </form>
+
+    <p>
+      Once your link is generated, it can be used to subscribe to the calendar in applications such as Apple's Calendar
+      app (e.g. Settings > Calendar > Accounts > Add Account > Other > Add Subscribed Calendar > Paste link here.)
+    </p>
+
+    <p id="url-result"></p>
+
+    <footer>
+      <p>Created by <a href="https://www.charlesomer.co.uk">Charles</a>.</p>
+    </footer>
+
+  </body>
+</html>
