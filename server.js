@@ -2,14 +2,23 @@ var express = require('express');
 var app = express();
 const axios = require('axios');
 var FormData = require('form-data');
+var validator = require('validator');
 
 app.get('/', function (req, res) {
-  if (!req.query || !req.query.uprn) {
+  if (
+    !req.query ||
+    !req.query.uprn ||
+    !validator.isInt(req.query.uprn, { min: 0 })
+  ) {
     return res.sendFile('/app/index.html')
   }
-
   var bodyFormData = new FormData();
   bodyFormData.append('ufprt', process.env.DATA_UFPRT);
+
+  if (req.query.reminderMinutes && validator.isInt(req.query.reminderMinutes, { min: 0 })) {
+    bodyFormData.append('ddlReminder', req.query.reminderMinutes);
+  }
+
   axios({
     method: "post",
     url: 'https://www.southampton.gov.uk/whereilive/waste-calendar?UPRN=' + req.query.uprn,

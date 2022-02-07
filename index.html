@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    @media (prefers-color-scheme: dark) {
+      :root {
+        background-color: #000000;
+        color: #FFFFFF;
+      }
+      a {
+        color: lightblue;
+      }
+    }
   </style>
 
   <head>
@@ -11,7 +20,15 @@
       function getUrl() {
         const form = document.getElementById('uprnForm');
 
-        document.getElementById("url-result").innerText = "https://bin-calendar.nova.do?uprn=" + form[0].value
+        let reminderMinutesParam = ""
+        if (form[1].value) {
+          let a = form[1].value.split(':')
+          let originalMinutes = (+a[0]) * 60 + (+a[1])
+          let reminderMinutes = 1440 - originalMinutes
+          reminderMinutesParam = "&reminderMinutes=" + reminderMinutes
+        }
+
+        document.getElementById("url-result").innerText = "https://bin-calendar.nova.do?uprn=" + form[0].value + reminderMinutesParam
       }
     </script>
   </head>
@@ -31,7 +48,9 @@
 
     <form onsubmit="event.preventDefault(); getUrl()" type="text/JavaScript" id="uprnForm">
       <label for="uprn">UPRN</label>
-      <input type="text" id="uprn" name="uprn" required><br />
+      <input type="number" id="uprn" name="uprn" required><br />
+      <label for="reminderTime">Include reminder at this time the day before (24 hour format)</label>
+      <input type="time" id="reminderTime" name="reminderTime" min="00:10" max="23:50"><br />
       <input type="submit" value="Get URL">
     </form>
 
@@ -43,7 +62,10 @@
     <p id="url-result"></p>
 
     <footer>
-      <p>Created by <a href="https://www.charlesomer.co.uk">Charles</a>.</p>
+      <p>
+        Created by <a href="https://www.charlesomer.co.uk">Charles</a>.<br />
+        <a href="https://github.com/charlesomer/bin-calendar">Source Code</a>
+      </p>
     </footer>
 
   </body>
