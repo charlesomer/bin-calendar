@@ -3,8 +3,6 @@ var app = express();
 const axios = require('axios');
 var FormData = require('form-data');
 
-console.log(process.env);
-
 app.get('/', function (req, res) {
   if (!req.query || !req.query.uprn) {
     return res.sendFile('/app/index.html')
