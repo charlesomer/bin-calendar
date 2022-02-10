@@ -15,4 +15,4 @@ refresh so I'm not 100% sure if it's a "secret" value or not. It is required
 as a post parameter (form-data) to force the website to serve the calendar data
 instead of the webpage since they use the same address.
 
-- Development: `docker run --rm -it -v ${PWD}/server.js:/app/server.js -v ${PWD}/index.html:/app/index.html  -v ${PWD}/.env.dev:/app/.env.dev -p 8080:8080 $(docker build -q . -f ./Dockerfile.dev)`
+- Development: `docker run --rm -it -v ${PWD}/server.js:/app/server.js -v ${PWD}/index.html:/app/index.html -v ${PWD}/.env.dev:/app/.env.dev -p 8080:8080 $(docker build -q . -f ./Dockerfile.dev)`
